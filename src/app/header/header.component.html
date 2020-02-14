@@ -1,0 +1,40 @@
+<nav class="navbar" role="navigation">
+  <div class="navbar-brand=">
+    <a class="navbar-item">
+      <img src="https://www.insuredmine.com/blog/wp-content/uploads/2017/06/insured-mine-logo-transparent.png"
+           alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="180" height="50">
+    </a>
+  </div>
+
+  <div class="navbar-item is-active">
+    <a class="navbar-item" routerLinkActive="active" [routerLink]="['home']">
+      Home
+    </a>
+    <a class="navbar-item" routerLinkActive="active" [routerLink]="['about']">
+      About
+    </a>
+    <a class="navbar-item"routerLinkActive="active" [routerLink]="['gallery']" *ngIf="authentication">
+      Gallery
+    </a>
+
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item" *ngIf="authentication">
+        <span><strong>{{username}}</strong></span>
+      </div>
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary" [routerLink]="['/login']" *ngIf="!authentication">
+            <strong>Log in</strong>
+          </a>
+          <a class="button is-primary" [routerLink]="['/home']" (click)="onLogOut()" *ngIf="authentication">
+            <strong>Log out</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
